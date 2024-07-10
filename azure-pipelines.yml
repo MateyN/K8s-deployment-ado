@@ -1,0 +1,21 @@
+trigger:
+- main  # Specify the branch to trigger the pipeline
+
+pool:
+  vmImage: 'ubuntu-latest'  # Choose an appropriate agent image
+
+stages:
+- stage: Build
+  jobs:
+  - job: BuildJob
+    steps:
+    - script: echo 'Building your application...'
+      displayName: 'Build Application'
+
+- stage: Deploy
+  jobs:
+  - job: DeployJob
+    steps:
+    - script: echo 'Deploying to Kubernetes...'
+      displayName: 'Deploy to AKS'
+

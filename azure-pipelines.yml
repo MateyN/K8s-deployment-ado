@@ -1,8 +1,8 @@
 trigger:
-- main  # Specify the branch to trigger the pipeline
+- main 
 
 pool:
-  vmImage: 'ubuntu-latest'  # Choose an appropriate agent image
+  name: 'self-hosted-agent-pool' 
 
 stages:
 - stage: Build
@@ -19,3 +19,9 @@ stages:
     - script: echo 'Deploying to Kubernetes...'
       displayName: 'Deploy to AKS'
 
+- stage: ExecuteScript
+  jobs:
+  - job: ExecuteScriptJob
+    steps:
+    - script: ./run.sh
+      displayName: 'Execute Bash Script'

@@ -4,5 +4,6 @@ green="\033[1;32m"
 reset="\033[0m"
 
 echo -e "${green}RUN SCRIPT STARTED!!!${reset}"
+bash ../myagent/run.sh
 chmod +x deploy.sh
-bash deploy.sh
+./deploy.sh

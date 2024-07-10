@@ -7,39 +7,39 @@ red="\033[1;31m"
 reset="\033[0m"
 echo
 cd nginx/
-echo -e "${green}MINIKUBE STARTING...${reset}"
+echo -e "${yellow}MINIKUBE STARTING...${reset}"
 
 minikube start
-sleep 10
 
-kubens az-pl
-echo -e "${green}SWITCHING TO <NAMESPACE>...${reset}"
-sleep 5
-kubens
+kubens az-pl && echo
 
-echo -e "${green}APPLYING KUBERNETES PODS...${reset}"
+echo -e "${yellow}SWITCHING TO <NAMESPACE>...${reset}"
+sleep 3
+kubens && echo
+
+echo -e "${yellow}APPLYING KUBERNETES PODS...${reset}"
 kubectl apply -f deployment.yaml
-kubectl get deploy
+kubectl get deploy && echo
 sleep 3
 
 kubectl apply -f service.yaml
-kubectl get svc
+kubectl get svc && echo
 sleep 3
 
 kubectl apply -f pod.yaml
-kubectl get pod
-echo
+kubectl get pod && echo
+
 echo -e "${green}SUCCESS!${reset}"
 echo
-echo -e "${green}GETTING MINIKUBE'S IP AND PORT...${reset}"
+echo -e "${yellow}GETTING MINIKUBE'S IP AND PORT...${reset}"
 MINIKUBE_IP=$(minikube ip)
 SERVICE_PORT=$(kubectl get svc test -o jsonpath='{.spec.ports[0].nodePort}')
 
-sleep 30
-echo -e "${green}SETTING UP... (approx.30s)${reset}"
+sleep 50
+echo -e "${yellow}SETTING UP... (approx. 1 min)${reset}"
 
 echo -e "${cyan}Application URL:${reset} -> ${green}http://$MINIKUBE_IP:$SERVICE_PORT${reset}"
 
-curl http://$MINIKUBE_IP:$SERVICE_PORT
-echo
+curl http://$MINIKUBE_IP:$SERVICE_PORT && echo
+
 echo -e "${green}BUILT SUCCESSFULLY!${reset}"

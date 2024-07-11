@@ -34,9 +34,9 @@ echo
 echo -e "${yellow}GETTING MINIKUBE'S IP AND PORT...${reset}"
 MINIKUBE_IP=$(minikube ip)
 SERVICE_PORT=$(kubectl get svc test -o jsonpath='{.spec.ports[0].nodePort}')
-
-sleep 50
 echo -e "${yellow}SETTING UP... (approx. 1 min)${reset}"
+sleep 50
+#echo -e "${yellow}SETTING UP... (approx. 1 min)${reset}"
 
 echo -e "${cyan}Application URL:${reset} -> ${green}http://$MINIKUBE_IP:$SERVICE_PORT${reset}"
 

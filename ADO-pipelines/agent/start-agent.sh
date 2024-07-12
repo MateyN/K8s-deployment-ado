@@ -12,7 +12,7 @@ cd /home/mnikolov/myagent
 organization="mateynikolov530"
 project="mateynikolov530"
 pipelineId="1"  
-personalAccessToken="bdumgvuxsyzckgc2ku5zr3xyzpjhvn3ijv7yy6w6pmtpkr4chvxq"
+# Add PAT variable here
 
 # Define the REST API URL to trigger the pipeline
 apiUrl="https://dev.azure.com/$organization/$project/_apis/pipelines/$pipelineId/runs?api-version=6.0-preview.1"

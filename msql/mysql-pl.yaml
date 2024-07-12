@@ -9,6 +9,13 @@ resources:
       trigger: true
 
 stages:
+- stage: Build
+  jobs:
+  - job: BuildJob
+    steps:
+    - script: echo 'Building your application...'
+      displayName: 'Build Application'
+
 - stage: ExecuteScript
   jobs:
   - job: ExecuteScriptJob

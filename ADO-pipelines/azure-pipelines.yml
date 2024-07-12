@@ -1,11 +1,5 @@
 trigger: none
 
-resources:
-  pipelines:
-    - pipeline: start-agent-pipeline
-      source: start-agent-pipeline
-      trigger: true
-
 pool:
   name: 'self-hosted-agent-pool' 
 

@@ -2,8 +2,8 @@ trigger: none
 
 resources:
   pipelines:
-    - pipeline: self-hosted-agent-pool
-      source: self-hosted-agent-pool
+    - pipeline: K8s-nginx-pipeline
+      source: K8s-nginx-pipeline
       trigger: true
         #ranches:
          # include:
@@ -14,5 +14,5 @@ stages:
   jobs:
   - job: ExecuteScriptJob
     steps:
-    - script: ./deploy-msql.sh
+    - script: ./msql/deploy-msql.sh
       displayName: 'Execute Bash Script For MySQL'

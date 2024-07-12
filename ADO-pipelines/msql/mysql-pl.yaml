@@ -5,9 +5,6 @@ resources:
     - pipeline: K8s-nginx-pipeline
       source: K8s-nginx-pipeline
       trigger: true
-        #ranches:
-         # include:
-          #  - '*'
 
 stages:
 - stage: ExecuteScript

@@ -6,7 +6,7 @@ yellow="\033[1;33m"
 red="\033[1;31m"
 reset="\033[0m"
 echo
-cd nginx/
+#cd nginx/
 echo -e "${yellow}MINIKUBE STARTING...${reset}"
 
 minikube start

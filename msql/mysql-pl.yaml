@@ -4,10 +4,10 @@ resources:
   pipelines:
     - pipeline: self-hosted-agent-pool
       source: self-hosted-agent-pool
-      trigger:
-        branches:
-          include:
-            - '*'
+      trigger: true
+        #ranches:
+         # include:
+          #  - '*'
 
 stages:
 - stage: ExecuteScript

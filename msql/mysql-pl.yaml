@@ -1,0 +1,17 @@
+trigger:
+- staging
+- production
+
+resources:
+  pipelines:
+    - pipeline: self-hosted-agent-pool
+      source: self-hosted-agent-pool 
+      trigger: true
+
+stages:
+- stage: ExecuteScript
+  jobs:
+  - job: ExecuteScriptJob
+    steps:
+    - script: ./deploy-msql.sh
+      displayName: 'Execute Bash Script'

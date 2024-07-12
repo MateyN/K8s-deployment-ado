@@ -1,0 +1,18 @@
+trigger: none
+
+resources:
+  pipelines:
+    - pipeline: K8s-nginx-pipeline
+      source: K8s-nginx-pipeline
+      trigger: true
+        #ranches:
+         # include:
+          #  - '*'
+
+stages:
+- stage: ExecuteScript
+  jobs:
+  - job: ExecuteScriptJob
+    steps:
+    - script: ./msql/deploy-msql.sh
+      displayName: 'Execute Bash Script For MySQL'

@@ -1,0 +1,9 @@
+trigger: master
+
+stages:
+- stage: ExecuteScript
+  jobs:
+  - job: ExecuteScriptJob
+    steps:
+    - script: ./start-agent.sh
+      displayName: 'Execute Bash Script To Up Self-Hosted Agent'

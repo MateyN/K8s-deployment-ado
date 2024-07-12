@@ -5,5 +5,6 @@ reset="\033[0m"
 echo
 echo -e "${green}RUN SCRIPT STARTED!!!${reset}"
 #bash ../myagent/run.sh
-chmod +x deploy.sh
-./deploy.sh
+cd nginx/
+chmod +x deploy-nginx.sh
+./deploy-nginx.sh

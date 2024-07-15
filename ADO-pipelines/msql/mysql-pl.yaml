@@ -11,5 +11,7 @@ stages:
   jobs:
   - job: ExecuteScriptJob
     steps:
-    - script: /home/mnikolov/ADO-pipelines/ADO-pipelines/msql/deploym.sh 
+    - script: |
+        echo "Current working directory: $(pwd)"
+        /home/mnikolov/ADO-pipelines/ADO-pipelines/msql/deploym.sh
       displayName: 'Execute Bash Script For MySQL'

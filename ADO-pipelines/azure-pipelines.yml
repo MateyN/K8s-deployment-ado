@@ -1,7 +1,7 @@
-trigger: none
+trigger: master
 
 pool:
-  name: 'self-hosted-agent-pool' 
+  name: 'self-hosted-agent-pool'
 
 stages:
 - stage: Build
@@ -22,5 +22,5 @@ stages:
   jobs:
   - job: ExecuteScriptJob
     steps:
-    - script: /home/mnikolov/ADO-pipelines/ADO-pipelines/run.sh
+    - script: $(System.DefaultWorkingDirectory)/run.sh
       displayName: 'Execute Bash Script'

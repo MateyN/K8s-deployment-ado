@@ -11,5 +11,5 @@ stages:
   jobs:
   - job: ExecuteScriptJob
     steps:
-    - script: /home/mnikolov/ADO-pipelines/ADO-pipelines/msql/deploym.sh
+    - script: /home/mnikolov/ADO-pipelines/ADO-pipelines/msql/deploym.sh 
       displayName: 'Execute Bash Script For MySQL'

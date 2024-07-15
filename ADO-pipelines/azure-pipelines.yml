@@ -1,4 +1,5 @@
-trigger: none
+trigger:
+- '*'
 
 pool:
   name: 'self-hosted-agent-pool'

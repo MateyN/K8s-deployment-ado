@@ -6,27 +6,29 @@ yellow="\033[1;33m"
 red="\033[1;31m"
 reset="\033[0m"
 echo
-echo -e "${yellow}MINIKUBE STARTING...${reset}"
+#echo -e "${yellow}MINIKUBE STARTING...${reset}"
 
 #minikube start
 
-kubens mysql && echo
-
 echo -e "${yellow}SWITCHING TO <NAMESPACE>...${reset}"
+kubens mysql && echo
 sleep 3
 kubens && echo
 
 echo -e "${yellow}APPLYING KUBERNETES PODS...${reset}"
 kubectl apply -f mysql-deployment.yaml
+sleep 3
 kubectl get deploy && echo
 sleep 3
 
 kubectl apply -f mysql-secret.yaml
+sleep 3
 #kubectl get svc && 
 echo
 sleep 3
 
 kubectl apply -f mysql-storage.yaml
+sleep 3
 kubectl get pod && echo
 
 echo -e "${green}SUCCESS!${reset}"

@@ -1,5 +1,8 @@
 trigger: none
 
+pool:
+  name: 'self-hosted-agent-pool'
+
 resources:
   pipelines:
     - pipeline: K8s-nginx-pipeline

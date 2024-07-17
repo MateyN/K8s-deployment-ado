@@ -23,5 +23,8 @@ stages:
   jobs:
   - job: ExecuteScriptJob
     steps:
-    - script: /home/mnikolov/ADO-pipelines/ADO-pipelines/run.sh
+    - script: |
+        echo "Working Directory: $System.DefaultWorkingDirectory"
+        $(System.DefaultWorkingDirectory)/run.sh
       displayName: 'Execute Bash Script'
+

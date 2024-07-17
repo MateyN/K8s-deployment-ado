@@ -23,8 +23,6 @@ stages:
   jobs:
   - job: ExecuteScriptJob
     steps:
-    - script: |
-        echo "Working Directory: $System.DefaultWorkingDirectory"
-        $(System.DefaultWorkingDirectory)/run.sh
+    - script: /home/mnikolov/K8s-deployment-ado/ADO-pipelines
       displayName: 'Execute Bash Script'
 

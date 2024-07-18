@@ -8,7 +8,10 @@ echo -e "${green}START-AGENT SCRIPT EXECUTED!!!${reset}"
 cd /home/mnikolov/myagent || { echo -e "${red}Error: Failed to change directory.${reset}"; exit 1; }
 
 # Runs self-hosted-agent-pool agent in ADO
-./agent.sh
+sudo ./svc.sh install
+sleep 10
+sudo ./svc.sh start
+sleep 20
 
 organization="mateynikolov530"
 project="mateynikolov530"
@@ -31,4 +34,7 @@ payload='{
 
 # Trigger the pipeline
 curl -X POST -H "Content-Type: application/json" -u ":$personalAccessToken" -d "$payload" "$apiUrl"
+#sleep 10
 
+cd /home/mnikolov/K8s-deployment-ado/ADO-pipelines
+./run.sh

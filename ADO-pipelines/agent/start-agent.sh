@@ -8,8 +8,8 @@ echo -e "${green}START-AGENT SCRIPT EXECUTED!!!${reset}"
 cd /home/mnikolov/myagent || { echo -e "${red}Error: Failed to change directory.${reset}"; exit 1; }
 
 # Runs self-hosted-agent-pool agent in ADO
-sudo ./svc.sh install
-sleep 10
+#sudo ./svc.sh install
+#sleep 10
 sudo ./svc.sh start
 sleep 20
 

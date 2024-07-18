@@ -47,6 +47,5 @@ echo "$response"
 cd /home/mnikolov/K8s-deployment-ado/ADO-pipelines
 ./run.sh
 
-# End of script
 echo "Script completed successfully."
 

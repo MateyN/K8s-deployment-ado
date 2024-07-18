@@ -1,5 +1,5 @@
 trigger:
-- '*'
+- none
 
 pool:
   name: 'self-hosted-agent-pool'

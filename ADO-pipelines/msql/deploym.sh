@@ -7,8 +7,9 @@ reset="\033[0m"
 
 ns="mysql"
 echo -e "${yellow}SWITCHING TO mysql namespace...${reset}"
+sleep 10
 kubens "$ns"
-
+sleep 5
 apply_resources() {
     kubectl apply -f "$1"
     sleep 3
@@ -21,7 +22,7 @@ apply_resources mysql-storage.yaml
 echo
 echo -e "${green}SUCCESSFULLY DEPLOYED!${reset}"
 
-sleep 50
+#sleep 50
 
-cd /home/mnikolov/myagent/
-sudo ./svc.sh stop
+#cd /home/mnikolov/myagent/
+#sudo ./svc.sh stop

@@ -23,6 +23,6 @@ stages:
   jobs:
   - job: ExecuteScriptJob
     steps:
-    - script: /home/mnikolov/K8s-deployment-ado/ADO-pipelines
+    - script: /home/mnikolov/K8s-deployment-ado/ADO-pipelines/run.sh
       displayName: 'Execute Bash Script'
 

@@ -21,3 +21,7 @@ apply_resources mysql-storage.yaml
 echo
 echo -e "${green}SUCCESSFULLY DEPLOYED!${reset}"
 
+sleep 50
+
+cd /home/mnikolov/myagent/
+sudo ./svc.sh stop

@@ -76,6 +76,3 @@ cd /home/mnikolov/K8s-deployment-ado/ADO-pipelines
 ./run.sh > /dev/null 2>&1
 
 echo "Script completed successfully."
-
-#rm -f "$flag_file"
-

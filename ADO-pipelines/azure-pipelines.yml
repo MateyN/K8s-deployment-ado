@@ -21,6 +21,13 @@ stages:
     - script: echo 'Building your application...'
       displayName: 'Build Application'
 
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'build'
+        publishLocation: 'Container'
+      displayName: 'Publish Build Artifacts'
+
 - stage: Deploy
   jobs:
   - job: DeployJob
@@ -34,4 +41,3 @@ stages:
     steps:
     - script: /home/mnikolov/K8s-deployment-ado/ADO-pipelines/start-app.sh
       displayName: 'Execute Bash Script'
-

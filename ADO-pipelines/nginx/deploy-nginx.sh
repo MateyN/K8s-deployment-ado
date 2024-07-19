@@ -36,4 +36,3 @@ echo -e "${cyan}Application URL:${reset} -> ${green}http://$MINIKUBE_IP:$SERVICE
 curl "http://$MINIKUBE_IP:$SERVICE_PORT" && echo > /dev/null 2>&1
 
 echo -e "${green}SUCCESSFULLY DEPLOYED!${reset}"
-

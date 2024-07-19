@@ -2,7 +2,6 @@
 
 kubectl get pods
 kubectl delete pod msql && sleep 5
-#kubectl delete pod nginx && sleep 5
 kubectl get deploys && sleep 5
 kubectl delete deploy msql && sleep 5
 kubens az-pl && sleep 5

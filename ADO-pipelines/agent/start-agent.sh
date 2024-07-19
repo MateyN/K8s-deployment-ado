@@ -34,7 +34,9 @@ fi
 organization="mateynikolov530"
 project="mateynikolov530"
 pipelineId="1"
-personalAccessToken="y6zh4gxrbkezsltnkmr6w5qrlhzkemc3cg27rfespdbmneqe6aha"
+# personalAccessToken="PAT HERE"
+# Add the PAT from Azure here. Deleted for security measures.
+
 
 # Define the REST API URL to trigger the pipeline
 apiUrl="https://dev.azure.com/$organization/$project/_apis/pipelines/$pipelineId/runs?api-version=6.0-preview.1"

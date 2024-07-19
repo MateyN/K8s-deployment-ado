@@ -12,5 +12,5 @@ kubectl delete deploy nginx && sleep 5
 
 minikube stop
 
-sleep 10
-cd /home/mnikolov/K8s-deployment-ado/ADO-pipelines/log/ && rm -rf *.log
+#sleep 10
+#cd /home/mnikolov/K8s-deployment-ado/ADO-pipelines/log/ && rm -rf *.log

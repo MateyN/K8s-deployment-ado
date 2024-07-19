@@ -5,39 +5,43 @@ pool:
   name: 'self-hosted-agent-pool'
 
 stages:
-- stage: Verify
+- stage: RunScripts
   jobs:
-  - job: VerifyJob
+  - job: RunScriptsJob
     steps:
     - script: |
-        echo "TF_BUILD = $TF_BUILD"
-        printenv | grep TF_BUILD
-      displayName: 'Verify TF_BUILD Environment Variable'
+        echo "Starting the application..."
+        /home/mnikolov/K8s-deployment-ado/ADO-pipelines/start-app.sh
+      displayName: 'Run start-app.sh'
 
-- stage: Build
+    - script: |
+        echo "Running run.sh..."
+        /home/mnikolov/K8s-deployment-ado/ADO-pipelines/run.sh
+      displayName: 'Run run.sh'
+
+    - script: |
+        echo "Deploying nginx..."
+        /home/mnikolov/K8s-deployment-ado/ADO-pipelines/nginx/deploy-nginx.sh
+      displayName: 'Run deploy-nginx.sh'
+
+    - script: |
+        echo "Deploying MySQL..."
+        /home/mnikolov/K8s-deployment-ado/ADO-pipelines/msql/deploym.sh
+      displayName: 'Run deploym.sh'
+
+    - script: |
+        echo "Running cleanup..."
+        /home/mnikolov/K8s-deployment-ado/ADO-pipelines/cleanup.sh
+      displayName: 'Run cleanup.sh'
+
+- stage: PublishArtifacts
+  dependsOn: RunScripts
   jobs:
-  - job: BuildJob
+  - job: PublishArtifactsJob
     steps:
-    - script: echo 'Building your application...'
-      displayName: 'Build Application'
-
     - task: PublishBuildArtifacts@1
       inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'build'
+        PathtoPublish: '/home/mnikolov/K8s-deployment-ado/ADO-pipelines/log'
+        ArtifactName: 'logs'
         publishLocation: 'Container'
-      displayName: 'Publish Build Artifacts'
-
-- stage: Deploy
-  jobs:
-  - job: DeployJob
-    steps:
-    - script: echo 'Deploying to Kubernetes...'
-      displayName: 'Deploy to AKS'
-
-- stage: ExecuteScript
-  jobs:
-  - job: ExecuteScriptJob
-    steps:
-    - script: /home/mnikolov/K8s-deployment-ado/ADO-pipelines/start-app.sh
-      displayName: 'Execute Bash Script'
+      displayName: 'Publish Log Artifacts'

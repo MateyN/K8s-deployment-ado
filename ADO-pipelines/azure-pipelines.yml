@@ -5,6 +5,15 @@ pool:
   name: 'self-hosted-agent-pool'
 
 stages:
+- stage: Verify
+  jobs:
+  - job: VerifyJob
+    steps:
+    - script: |
+        echo "TF_BUILD = $TF_BUILD"
+        printenv | grep TF_BUILD
+      displayName: 'Verify TF_BUILD Environment Variable'
+
 - stage: Build
   jobs:
   - job: BuildJob

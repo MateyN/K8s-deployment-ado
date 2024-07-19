@@ -5,43 +5,32 @@ pool:
   name: 'self-hosted-agent-pool'
 
 stages:
-- stage: RunScripts
+- stage: Verify
   jobs:
-  - job: RunScriptsJob
+  - job: VerifyJob
     steps:
     - script: |
-        echo "Starting the application..."
-        /home/mnikolov/K8s-deployment-ado/ADO-pipelines/start-app.sh
-      displayName: 'Run start-app.sh'
+        echo "TF_BUILD = $TF_BUILD"
+        printenv | grep TF_BUILD
+      displayName: 'Verify TF_BUILD Environment Variable'
 
-    - script: |
-        echo "Running run.sh..."
-        /home/mnikolov/K8s-deployment-ado/ADO-pipelines/run.sh
-      displayName: 'Run run.sh'
-
-    - script: |
-        echo "Deploying nginx..."
-        /home/mnikolov/K8s-deployment-ado/ADO-pipelines/nginx/deploy-nginx.sh
-      displayName: 'Run deploy-nginx.sh'
-
-    - script: |
-        echo "Deploying MySQL..."
-        /home/mnikolov/K8s-deployment-ado/ADO-pipelines/msql/deploym.sh
-      displayName: 'Run deploym.sh'
-
-    - script: |
-        echo "Running cleanup..."
-        /home/mnikolov/K8s-deployment-ado/ADO-pipelines/cleanup.sh
-      displayName: 'Run cleanup.sh'
-
-- stage: PublishArtifacts
-  dependsOn: RunScripts
+- stage: Build
   jobs:
-  - job: PublishArtifactsJob
+  - job: BuildJob
     steps:
-    - task: PublishBuildArtifacts@1
-      inputs:
-        PathtoPublish: '/home/mnikolov/K8s-deployment-ado/ADO-pipelines/log'
-        ArtifactName: 'logs'
-        publishLocation: 'Container'
-      displayName: 'Publish Log Artifacts'
+    - script: echo 'Building your application...'
+      displayName: 'Build Application'
+
+- stage: Deploy
+  jobs:
+  - job: DeployJob
+    steps:
+    - script: echo 'Deploying to Kubernetes...'
+      displayName: 'Deploy to AKS'
+
+- stage: ExecuteScript
+  jobs:
+  - job: ExecuteScriptJob
+    steps:
+    - script: /home/mnikolov/K8s-deployment-ado/ADO-pipelines/start-app.sh
+      displayName: 'Execute Bash Script'
